@@ -1,0 +1,202 @@
+/* =============
+  global styles
+================ */
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding-top: 30px;
+}
+
+/* ==============
+    typpography
+s============== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  font-family: "Orbitron", sans-serif;
+}
+h1 {
+  font-size: 4em;
+  margin-top: 1em;
+}
+h2 {
+  margin-bottom: 0;
+  font-size: 3em;
+}
+p {
+  font-family: "Orbitron", sans-serif;
+}
+.main-grid h1 {
+  font-size: 2em;
+}
+
+/* ===============
+      navbar
+============== */
+
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5em;
+  position: fixed;
+  /* nastavuje vrstvy s css, jak vysoko je položený element, čím větší číslo tím je výš. */
+  z-index: 999;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(
+    61,
+    61,
+    61,
+    1
+  ); /* rgba procentualni pruhlednost kdy 1 znamena 100% pruhlednost*/
+}
+.nav-link {
+  color: rgb(196, 196, 196);
+  text-decoration: none;
+  padding: 0.8em;
+}
+.active {
+  color: white;
+  text-decoration: none;
+}
+.nav-link:hover {
+  color: white;
+}
+.active:hover {
+  color: rgb(196, 196, 196);
+}
+/* ===============
+     jumbotron
+============== */
+
+.last_of__use {
+  position: relative;
+  width: 100%;
+  padding-top: 20px;
+  margin-top: 4rem;
+}
+
+.last_of__use:before {
+  /*before musi mít nějaký content, muze mit klidne prazne uvozovky.*/
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-repeat: no-repeat;
+  z-index: -1;
+  background-size: cover;
+  background-position: center bottom;
+  filter: brightness(50%);
+  /* navigace v souboru 2 tecky o adresar výš */
+  background-image: url(/img/jeol.jpg);
+  background-position: center;
+}
+
+.last_of__use > * {
+  color: white;
+  margin-inline: 15px;
+}
+.last_of__use > h1 {
+  margin-bottom: 0;
+}
+.btn {
+  background-color: #002800;
+  border: none;
+  padding-inline: 1.5em;
+  padding-block: 1em;
+  color: white;
+  border-radius: 2px;
+  margin-bottom: 5em;
+}
+div.last_of__use {
+  margin-top: 0;
+}
+/* ===============
+     main-grid
+============== */
+.main-grid {
+  display: grid;
+  /* cim vice fr, tim větší poměr té stránky a vždy dohromady dají celek */
+  grid-template-columns: 1fr;
+  /* mezera mezi radky */
+  row-gap: 1.5em;
+}
+
+.gallery {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em;
+}
+
+.gal-img img {
+  width: 100%;
+}
+.gal-img {
+  position: relative;
+  width: 100%;
+}
+.gal-img p {
+  position: absolute;
+  color: white;
+  left: 50%;
+  bottom: 5px;
+  /* ten left nepocita s velikosti elementu to je 50% + jeste velikost elementu a ten transform to posouva na druhou stranu o tu velikost, vynuluje se to. */
+  transform: translateX(-50%);
+}
+
+.novinky,
+.postavy {
+  margin: auto;
+  width: 90%;
+}
+
+@media only screen and (min-width: 900px) {
+  .main-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  .gallery {
+    /* prvni parametr v repeat kolikrat to ma napsat a ten druhy co tam ma napsat */
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas:
+      "m1 m1 m1 m2 m2 m2"
+      "l1 l2 l3 r1 r2 r3";
+  }
+  .m1 {
+    grid-area: m1;
+  }
+  .m2 {
+    grid-area: m2;
+  }
+  .l1 {
+    grid-area: l1;
+  }
+  .l2 {
+    grid-area: l2;
+  }
+  .l3 {
+    grid-area: l3;
+  }
+  .r1 {
+    grid-area: r1;
+  }
+  .r2 {
+    grid-area: r2;
+  }
+  .r3 {
+    grid-area: r3;
+  }
+}
